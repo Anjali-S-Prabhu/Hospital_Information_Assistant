@@ -35,13 +35,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-/** Available staff roles that map to the backend's role field. */
-const ROLES = [
-  { value: "doctor", label: "Doctor" },
-  { value: "nurse", label: "Nurse" },
-  { value: "admin", label: "Administrator" },
-  { value: "staff", label: "General Staff" },
-];
+
 
 export default function RegisterPage() {
   const { register, isAuthenticated } = useAuth();
@@ -166,7 +160,7 @@ export default function RegisterPage() {
                 Full Name
               </label>
               <div className="relative">
-                <UserIcon className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                 <input
                   id="reg-name"
                   type="text"
@@ -210,7 +204,7 @@ export default function RegisterPage() {
                 Role
               </label>
               <div className="relative">
-                <BadgeAlert className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                <Shield className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                 <select
                   id="reg-role"
                   value={role}

@@ -20,12 +20,11 @@
  * - JSX.Element: The rendered upload page.
  */
 
-import { useState, useRef, useEffect, type DragEvent, type ChangeEvent } from "react";
+import { useState, useRef, useEffect, type ChangeEvent } from "react";
 import api from "../api/axios";
 import {
   Upload,
   CloudUpload,
-  FileText,
   Loader2,
   CheckCircle,
   ExternalLink,
@@ -56,7 +55,7 @@ export default function UploadPage() {
   const [uploading, setUploading] = useState(false);
   const [uploads, setUploads] = useState<UploadResult[]>([]);
   const [error, setError] = useState("");
-  const [dragOver, setDragOver] = useState(false);
+
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -85,17 +84,7 @@ export default function UploadPage() {
     }
   };
 
-  /**
-   * handleDrop — Handles files dropped onto the drag zone.
-   */
-  const handleDrop = (e: DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    setDragOver(false);
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      setSelectedFile(e.dataTransfer.files[0]);
-      setError("");
-    }
-  };
+
 
   /**
    * handleUpload — Sends the file to the backend as multipart/form-data.
