@@ -1,0 +1,24 @@
+# Virtual Environments
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+
+# Local databases and uploads
+backend/hospital.db
+backend/uploads/
+
+# Dependency directories
+node_modules/
+frontend/node_modules/
+
+# Build outputs
+dist/
+frontend/dist/
+
+# Environment files
+.env
+.env.*
+backend/.env
+frontend/.env
