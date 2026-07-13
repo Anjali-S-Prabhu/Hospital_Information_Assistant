@@ -89,11 +89,14 @@ export default function RegisterPage() {
         typeof err === "object" &&
         err !== null &&
         "response" in err &&
-        typeof (err as Record<string, unknown>).response === "object"
+        typeof (err as any).response === "object"
       ) {
-        const response = (err as { response: { data?: { detail?: string } } })
-          .response;
-        setError(response.data?.detail || "Registration failed. Please try again.");
+        const responseData = (err as any).response?.data;
+        if (responseData && Array.isArray(responseData.detail)) {
+          setError(responseData.detail[0]?.msg || "Validation error in form data.");
+        } else {
+          setError(responseData?.detail || "Registration failed. Please try again.");
+        }
       } else {
         setError("An unexpected error occurred. Please try again.");
       }

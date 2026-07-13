@@ -66,11 +66,14 @@ export default function LoginPage() {
         typeof err === "object" &&
         err !== null &&
         "response" in err &&
-        typeof (err as Record<string, unknown>).response === "object"
+        typeof (err as any).response === "object"
       ) {
-        const response = (err as { response: { data?: { detail?: string } } })
-          .response;
-        setError(response.data?.detail || "Invalid email or password.");
+        const responseData = (err as any).response?.data;
+        if (responseData && Array.isArray(responseData.detail)) {
+          setError(responseData.detail[0]?.msg || "Validation error.");
+        } else {
+          setError(responseData?.detail || "Invalid email or password.");
+        }
       } else {
         setError("An unexpected error occurred. Please try again.");
       }
