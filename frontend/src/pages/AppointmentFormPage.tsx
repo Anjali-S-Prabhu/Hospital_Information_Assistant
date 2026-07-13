@@ -27,7 +27,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import api from "../api/axios";
 import {
   CalendarDays,
-  ArrowLeft,
   Save,
   User,
   Users,
